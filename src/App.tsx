@@ -24,6 +24,13 @@ import BusinessDirectoryPage from './pages/BusinessDirectoryPage';
 import TownGuidesPage from './pages/TownGuidesPage';
 import ThingsToDoPage from './pages/ThingsToDoPage';
 import BestOfDoylestownPage from './pages/BestOfDoylestownPage';
+import PrintSubscriptionsPage from './pages/PrintSubscriptionsPage';
+import DigitalSubscriptionsPage from './pages/DigitalSubscriptionsPage';
+import DonatePage from './pages/DonatePage';
+import LocationsPage from './pages/LocationsPage';
+import AnnualFundraiserPage from './pages/AnnualFundraiserPage';
+import ContactPage from './pages/ContactPage';
+import EditorialSubmissionsPage from './pages/EditorialSubmissionsPage';
 import { NewsletterProvider, useNewsletterContext } from './context/NewsletterContext';
 
 const AppContent = () => {
@@ -52,10 +59,17 @@ const AppContent = () => {
           <Route path="/community/directory/things-to-do" element={<ThingsToDoPage />} />
           <Route path="/community/best-of" element={<BestOfDoylestownPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/editorial-submissions" element={<EditorialSubmissionsPage />} />
           <Route path="/current-issue" element={<IssuePage />} />
           <Route path="/archive" element={<ArchivePage />} />
           <Route path="/advertise" element={<AdvertisePage />} />
+          <Route path="/print-subscriptions" element={<PrintSubscriptionsPage />} />
+          <Route path="/digital-subscriptions" element={<DigitalSubscriptionsPage />} />
+          <Route path="/donate" element={<DonatePage />} />
+          <Route path="/annual-fundraiser" element={<AnnualFundraiserPage />} />
           <Route path="/writer/:writerId" element={<WriterPage />} />
+          <Route path="/locations" element={<LocationsPage />} />
         </Routes>
         <Footer />
         {showPopup && <NewsletterPopup onClose={handleClose} />}

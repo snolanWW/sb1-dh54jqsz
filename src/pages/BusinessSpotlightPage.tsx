@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Clock, Globe, Phone, Star, ChevronRight, Building2, Heart, Users, Mail } from 'lucide-react';
 
-// Mock data for current spotlight
 const currentSpotlight = {
   id: 1,
   name: "Doylestown Bookshop",
@@ -30,7 +29,10 @@ Through careful curation and passionate booksellers, we've created a space that 
   images: [
     "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&q=80",
     "https://images.unsplash.com/photo-1526721940322-10fb6e3ae94a?auto=format&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&q=80"
+    "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?auto=format&fit=crop&q=80"
   ],
   testimonials: [
     {
@@ -46,7 +48,6 @@ Through careful curation and passionate booksellers, we've created a space that 
   ]
 };
 
-// Mock data for previous spotlights
 const previousSpotlights = [
   {
     id: 2,
@@ -123,31 +124,52 @@ const BusinessSpotlightPage = () => {
       {/* Current Spotlight Details */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-playfair text-3xl font-bold text-charcoal-gray mb-8">
-            Current Business Spotlight
-          </h2>
           <div className="flex flex-col lg:flex-row gap-8">
-            {/* Image Gallery */}
+            {/* Image Gallery - Updated with new layout */}
             <div className="lg:w-1/2">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="col-span-2">
+              <div className="space-y-4">
+                {/* First large image */}
+                <div>
                   <img
                     src={currentSpotlight.images[0]}
                     alt={currentSpotlight.name}
-                    className="w-full h-64 object-cover rounded-lg"
+                    className="w-full h-80 object-cover rounded-lg"
                   />
                 </div>
-                <div>
+                
+                {/* Two medium images */}
+                <div className="grid grid-cols-2 gap-4">
                   <img
                     src={currentSpotlight.images[1]}
-                    alt={`${currentSpotlight.name} detail 1`}
-                    className="w-full h-40 object-cover rounded-lg"
+                    alt={`${currentSpotlight.name} interior`}
+                    className="w-full h-48 object-cover rounded-lg"
                   />
-                </div>
-                <div>
                   <img
                     src={currentSpotlight.images[2]}
-                    alt={`${currentSpotlight.name} detail 2`}
+                    alt={`${currentSpotlight.name} display`}
+                    className="w-full h-48 object-cover rounded-lg"
+                  />
+                </div>
+
+                {/* Second large image */}
+                <div>
+                  <img
+                    src={currentSpotlight.images[3]}
+                    alt={`${currentSpotlight.name} reading area`}
+                    className="w-full h-80 object-cover rounded-lg"
+                  />
+                </div>
+
+                {/* Two small images */}
+                <div className="grid grid-cols-2 gap-4">
+                  <img
+                    src={currentSpotlight.images[4]}
+                    alt={`${currentSpotlight.name} event space`}
+                    className="w-full h-40 object-cover rounded-lg"
+                  />
+                  <img
+                    src={currentSpotlight.images[5]}
+                    alt={`${currentSpotlight.name} children's section`}
                     className="w-full h-40 object-cover rounded-lg"
                   />
                 </div>

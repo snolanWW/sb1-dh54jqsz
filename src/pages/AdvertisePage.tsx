@@ -2,16 +2,14 @@ import React, { useState } from 'react';
 import { 
   Users, 
   BarChart, 
-  Newspaper, 
-  Monitor, 
-  Mail, 
-  Phone, 
-  MessageSquare, 
-  ChevronRight, 
-  CheckCircle2, 
+  Target,
+  Mail,
+  Phone,
+  MessageSquare,
+  ChevronRight,
+  CheckCircle2,
   X,
   Building2,
-  Target,
   Megaphone,
   Globe,
   PieChart,
@@ -95,47 +93,7 @@ const benefits = [
   }
 ];
 
-// Mock data for advertising options
-const adOptions = [
-  {
-    title: "Digital Display Ads",
-    description: "High-visibility banner and sidebar advertisements",
-    specs: [
-      "Premium website placement",
-      "Mobile-responsive design",
-      "Click tracking analytics",
-      "Flexible duration options"
-    ],
-    icon: Monitor,
-    image: "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&q=80"
-  },
-  {
-    title: "Print Advertising",
-    description: "Traditional print advertisements in our weekly edition",
-    specs: [
-      "Full color options",
-      "Multiple size choices",
-      "Premium positioning",
-      "Design assistance"
-    ],
-    icon: Newspaper,
-    image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80"
-  },
-  {
-    title: "Sponsored Content",
-    description: "Native advertising that tells your brand's story",
-    specs: [
-      "Professional writing",
-      "SEO optimization",
-      "Social promotion",
-      "Permanent archive"
-    ],
-    icon: MessageSquare,
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80"
-  }
-];
-
-// Mock data for success metrics
+// Mock data for metrics
 const metrics = {
   readership: {
     print: 15000,
@@ -218,6 +176,18 @@ const AdvertisePage = () => {
             </div>
           </div>
         </div>
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg 
+            viewBox="0 0 1440 120" 
+            className="relative w-full h-[120px] text-[#F2F0EF] preserve-3d"
+            preserveAspectRatio="none"
+          >
+            <path 
+              fill="currentColor"
+              d="M0,120 C240,100 480,20 720,40 C960,60 1200,100 1440,80 L1440,120 L0,120 Z"
+            />
+          </svg>
+        </div>
       </div>
 
       {/* Benefits Section */}
@@ -247,362 +217,6 @@ const AdvertisePage = () => {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="pricing" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="font-playfair text-4xl font-bold text-charcoal-gray mb-4">
-              Advertising Packages
-            </h2>
-            <p className="text-lg text-charcoal-gray/70 max-w-2xl mx-auto">
-              Choose the perfect package to reach your target audience and achieve your marketing goals.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {pricingPackages.map((pkg, index) => (
-              <div 
-                key={index}
-                className={`relative bg-white rounded-lg ${
-                  pkg.popular 
-                    ? 'ring-2 ring-cardinal-red shadow-xl' 
-                    : 'border border-[#333333]'
-                }`}
-              >
-                {pkg.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-cardinal-red text-white px-4 py-1 rounded-full text-sm">
-                      Most Popular
-                    </span>
-                  </div>
-                )}
-                <div className="p-8">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 bg-cardinal-red/10 rounded-lg">
-                      <pkg.icon className="w-6 h-6 text-cardinal-red" />
-                    </div>
-                    <h3 className="font-playfair text-xl font-bold">{pkg.name}</h3>
-                  </div>
-                  
-                  <div className="mb-4">
-                    <div className="font-playfair text-3xl font-bold text-cardinal-red">
-                      {pkg.price}
-                      {pkg.price !== "Custom" && <span className="text-lg font-normal">/month</span>}
-                    </div>
-                    <p className="text-charcoal-gray/70 mt-2">{pkg.description}</p>
-                  </div>
-
-                  <ul className="space-y-3 mb-8">
-                    {pkg.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-start gap-2">
-                        <CheckCircle2 className="w-5 h-5 text-forest-green flex-shrink-0 mt-0.5" />
-                        <span className="text-charcoal-gray/80">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <button
-                    onClick={() => {
-                      setSelectedPackage(pkg.name);
-                      setShowContactForm(true);
-                    }}
-                    className={`w-full px-6 py-3 rounded-lg font-semibold transition-colors ${
-                      pkg.popular
-                        ? 'bg-cardinal-red text-white hover:bg-cardinal-red/90'
-                        : 'border border-[#333333] hover:bg-cardinal-red hover:text-white hover:border-cardinal-red'
-                    }`}
-                  >
-                    Get Started
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Advertising Options */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="font-playfair text-4xl font-bold text-charcoal-gray mb-4">
-              Advertising Solutions
-            </h2>
-            <p className="text-lg text-charcoal-gray/70 max-w-2xl mx-auto">
-              Choose from our range of advertising options designed to maximize your reach and impact.
-            </p>
-          </div>
-
-          <div className="space-y-12">
-            {adOptions.map((option, index) => (
-              <div 
-                key={index}
-                className={`flex flex-col ${
-                  index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                } gap-8 items-center`}
-              >
-                <div className="md:w-1/2">
-                  <div className="relative h-[400px] rounded-lg overflow-hidden">
-                    <img
-                      src={option.image}
-                      alt={option.title}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                    <div className="absolute bottom-6 left-6">
-                      <div className="flex items-center gap-3 mb-2">
-                        <div className="p-2 bg-white/90 rounded-lg">
-                          <option.icon className="w-5 h-5 text-cardinal-red" />
-                        </div>
-                        <h3 className="font-playfair text-2xl font-bold text-white">
-                          {option.title}
-                        </h3>
-                      </div>
-                      <p className="text-white/90">{option.description}</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="md:w-1/2">
-                  <div className="bg-white p-8 rounded-lg">
-                    <h4 className="font-medium text-lg mb-4">Specifications</h4>
-                    <ul className="space-y-3">
-                      {option.specs.map((spec, specIndex) => (
-                        <li key={specIndex} className="flex items-start gap-2">
-                          <CheckCircle2 className="w-5 h-5 text-forest-green flex-shrink-0 mt-0.5" />
-                          <span className="text-charcoal-gray/80">{spec}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <button
-                      onClick={() => setShowContactForm(true)}
-                      className="mt-6 px-6 py-3 bg-cardinal-red text-white rounded-lg hover:bg-cardinal-red/90 transition-colors"
-                    >
-                      Learn More
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Digital Ads Section */}
-<section className="py-20 bg-white">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="text-center mb-12">
-      <h2 className="font-playfair text-4xl font-bold text-charcoal-gray mb-4">
-        Digital Advertising
-      </h2>
-      <p className="text-lg text-charcoal-gray/70 max-w-2xl mx-auto">
-        Reach our engaged online audience through strategic digital placements and targeted campaigns.
-      </p>
-    </div>
-
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-      <div className="bg-[#F2F0EF] rounded-lg overflow-hidden">
-        <div className="relative h-64">
-          <img
-            src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&q=80"
-            alt="Website Display Ads"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-          <div className="absolute bottom-4 left-4">
-            <h3 className="text-white font-bold text-xl mb-1">Website Display Ads</h3>
-            <p className="text-white/90 text-sm">Premium placement on high-traffic pages</p>
-          </div>
-        </div>
-        <div className="p-6">
-          <h4 className="font-medium mb-4">Specifications</h4>
-          <ul className="space-y-2">
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-forest-green flex-shrink-0" />
-              <span>Banner (728x90px)</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-forest-green flex-shrink-0" />
-              <span>Sidebar (300x250px)</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-forest-green flex-shrink-0" />
-              <span>Mobile (320x50px)</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-forest-green flex-shrink-0" />
-              <span>File formats: JPG, PNG, GIF</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="bg-[#F2F0EF] rounded-lg overflow-hidden">
-        <div className="relative h-64">
-          <img
-            src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80"
-            alt="Native Content"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-          <div className="absolute bottom-4 left-4">
-            <h3 className="text-white font-bold text-xl mb-1">Native Content</h3>
-            <p className="text-white/90 text-sm">Engaging sponsored articles and features</p>
-          </div>
-        </div>
-        <div className="p-6">
-          <h4 className="font-medium mb-4">Features</h4>
-          <ul className="space-y-2">
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-forest-green flex-shrink-0" />
-              <span>Professional writing services</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-forest-green flex-shrink-0" />
-              <span>Social media promotion</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-forest-green flex-shrink-0" />
-              <span>SEO optimization</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-forest-green flex-shrink-0" />
-              <span>Performance analytics</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-{/* Print Ads Section */}
-<section className="py-20">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="text-center mb-12">
-      <h2 className="font-playfair text-4xl font-bold text-charcoal-gray mb-4">
-        Print Advertising
-      </h2>
-      <p className="text-lg text-charcoal-gray/70 max-w-2xl mx-auto">
-        Make an impact with our premium print advertising options in The Cardinal's weekly edition.
-      </p>
-    </div>
-
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-        <div className="relative h-48">
-          <img
-            src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&q=80"
-            alt="Full Page Ad"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-          <div className="absolute bottom-4 left-4">
-            <h3 className="text-white font-bold text-xl">Full Page</h3>
-          </div>
-        </div>
-        <div className="p-6">
-          <ul className="space-y-2">
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-forest-green flex-shrink-0" />
-              <span>10" x 13"</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-forest-green flex-shrink-0" />
-              <span>Premium positioning</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-forest-green flex-shrink-0" />
-              <span>Full color available</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-        <div className="relative h-48">
-          <img
-            src="https://images.unsplash.com/photo-1455894127589-22f75500213a?auto=format&fit=crop&q=80"
-            alt="Half Page Ad"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-          <div className="absolute bottom-4 left-4">
-            <h3 className="text-white font-bold text-xl">Half Page</h3>
-          </div>
-        </div>
-        <div className="p-6">
-          <ul className="space-y-2">
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-forest-green flex-shrink-0" />
-              <span>5" x 13" or 10" x 6.5"</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-forest-green flex-shrink-0" />
-              <span>Vertical or horizontal</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-forest-green flex-shrink-0" />
-              <span>Full color available</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-        <div className="relative h-48">
-          <img
-            src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?auto=format&fit=crop&q=80"
-            alt="Quarter Page Ad"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-          <div className="absolute bottom-4 left-4">
-            <h3 className="text-white font-bold text-xl">Quarter Page</h3>
-          </div>
-        </div>
-        <div className="p-6">
-          <ul className="space-y-2">
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-forest-green flex-shrink-0" />
-              <span>5" x 6.5"</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-forest-green flex-shrink-0" />
-              <span>Multiple positions</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-forest-green flex-shrink-0" />
-              <span>Full color available</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div className="mt-12 bg-[#F2F0EF] rounded-lg p-6">
-      <div className="flex items-start gap-4">
-        <div className="p-3 bg-cardinal-red/10 rounded-lg">
-        </div>
-        <div>
-          <h4 className="font-medium text-lg mb-2">Design Services Available</h4>
-          <p className="text-charcoal-gray/70 mb-4">
-            Our professional design team can help create your print advertisement to ensure maximum impact.
-            All ads include one round of revisions at no additional cost.
-          </p>
-          <button
-            onClick={() => setShowContactForm(true)}
-            className="inline-flex items-center text-cardinal-red hover:text-forest-green transition-colors"
-          >
-            Learn More About Design Services
-            <ChevronRight size={16} className="ml-1" />
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-      
       {/* Success Metrics */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -744,23 +358,76 @@ const AdvertisePage = () => {
         </div>
       </section>
 
-      {/* Contact CTA */}
-      <section className="py-20">
+      {/* Pricing Section */}
+      <section id="pricing" className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-cardinal-red rounded-lg p-12 text-center">
-            <h2 className="font-playfair text-3xl font-bold text-white mb-6">
-              Ready to Grow Your Business?
+          <div className="text-center mb-12">
+            <h2 className="font-playfair text-4xl font-bold text-charcoal-gray mb-4">
+              Advertising Packages
             </h2>
-            <p className="text-white/90 mb-8 max-w-2xl mx-auto">
-              Contact our advertising team today to discuss how we can help you achieve your marketing goals.
+            <p className="text-lg text-charcoal-gray/70 max-w-2xl mx-auto">
+              Choose the perfect package to reach your target audience and achieve your marketing goals.
             </p>
-            <button
-              onClick={() => setShowContactForm(true)}
-              className="inline-flex items-center px-8 py-3 bg-white text-cardinal-red rounded-lg font-semibold hover:bg-forest-green hover:text-white transition-colors"
-            >
-              Get Started
-              <ChevronRight size={20} className="ml-2" />
-            </button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {pricingPackages.map((pkg, index) => (
+              <div 
+                key={index}
+                className={`relative bg-white rounded-lg ${
+                  pkg.popular 
+                    ? 'ring-2 ring-cardinal-red shadow-xl' 
+                    : 'border border-[#333333]'
+                }`}
+              >
+                {pkg.popular && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <span className="bg-cardinal-red text-white px-4 py-1 rounded-full text-sm">
+                      Most Popular
+                    </span>
+                  </div>
+                )}
+                <div className="p-8">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2 bg-cardinal-red/10 rounded-lg">
+                      <pkg.icon className="w-6 h-6 text-cardinal-red" />
+                    </div>
+                    <h3 className="font-playfair text-xl font-bold">{pkg.name}</h3>
+                  </div>
+                  
+                  <div className="mb-4">
+                    <div className="font-playfair text-3xl font-bold text-cardinal-red">
+                      {pkg.price}
+                      {pkg.price !== "Custom" && <span className="text-lg font-normal">/month</span>}
+                    </div>
+                    <p className="text-charcoal-gray/70 mt-2">{pkg.description}</p>
+                  </div>
+
+                  <ul className="space-y-3 mb-8">
+                    {pkg.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-start gap-2">
+                        <CheckCircle2 className="w-5 h-5 text-forest-green flex-shrink-0 mt-0.5" />
+                        <span className="text-charcoal-gray/80">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <button
+                    onClick={() => {
+                      setSelectedPackage(pkg.name);
+                      setShowContactForm(true);
+                    }}
+                    className={`w-full px-6 py-3 rounded-lg font-semibold transition-colors ${
+                      pkg.popular
+                        ? 'bg-cardinal-red text-white hover:bg-cardinal-red/90'
+                        : 'border border-[#333333] hover:bg-cardinal-red hover:text-white hover:border-cardinal-red'
+                    }`}
+                  >
+                    Get Started
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -768,7 +435,7 @@ const AdvertisePage = () => {
       {/* Contact Form Modal */}
       {showContactForm && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+          <div className="bg-white rounded-lg max-w-2xl w-full">
             <div className="p-6">
               <div className="flex justify-between items-center mb-6">
                 <h2 className="font-playfair text-2xl font-bold">Contact Our Advertising Team</h2>

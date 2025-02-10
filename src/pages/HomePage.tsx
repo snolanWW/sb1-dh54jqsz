@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, ChevronLeft, Quote, Calendar, MapPin, Clock, Info } from 'lucide-react';
+import { 
+  ChevronRight, 
+  ChevronLeft, 
+  Quote, 
+  Calendar, 
+  MapPin, 
+  Clock, 
+  Info,
+  Instagram,
+  ExternalLink
+} from 'lucide-react';
 import { useNewsletterContext } from '../context/NewsletterContext';
 
 // Mock data for upcoming events
@@ -56,6 +66,42 @@ const testimonials = [
     author: "Emily Rodriguez",
     role: "Arts Foundation Director",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80"
+  }
+];
+
+// Mock data for Instagram feed
+const instagramPosts = [
+  {
+    id: 1,
+    image: "https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?auto=format&fit=crop&q=80",
+    caption: "Downtown Doylestown looking beautiful this spring! 🌸 #DoylestownPA",
+    likes: 245,
+    comments: 18,
+    date: "2 days ago"
+  },
+  {
+    id: 2,
+    image: "https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?auto=format&fit=crop&q=80",
+    caption: "Historic Fonthill Castle lit up for the evening tour. ✨ #BucksCounty",
+    likes: 189,
+    comments: 12,
+    date: "3 days ago"
+  },
+  {
+    id: 3,
+    image: "https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb?auto=format&fit=crop&q=80",
+    caption: "The Doylestown Arts Festival was a huge success! Thank you to all who attended. 🎨",
+    likes: 312,
+    comments: 24,
+    date: "4 days ago"
+  },
+  {
+    id: 4,
+    image: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&q=80",
+    caption: "Movie night at the County Theater. 🎬 #DoylestownNights",
+    likes: 278,
+    comments: 15,
+    date: "5 days ago"
   }
 ];
 
@@ -353,6 +399,86 @@ const HomePage = () => {
                     aria-label={`Go to testimonial ${index + 1}`}
                   />
                 ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Instagram Feed Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-12">
+            <div>
+              <h2 className="font-playfair text-4xl font-bold text-charcoal-gray mb-4">
+                Follow Us on Instagram
+              </h2>
+              <p className="text-lg text-charcoal-gray/70">
+                Stay connected with The Cardinal through our social media updates.
+              </p>
+            </div>
+            <a
+              href="https://instagram.com/thecardinal"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-cardinal-red text-white rounded-lg hover:bg-cardinal-red/90 transition-colors"
+            >
+              <Instagram size={20} />
+              @thecardinal
+            </a>
+          </div>
+
+          {/* Instagram Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {instagramPosts.map(post => (
+              <div
+                key={post.id}
+                className="group relative bg-white rounded-lg overflow-hidden"
+              >
+                <div className="relative aspect-square">
+                  <img
+                    src={post.image}
+                    alt="Instagram post"
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-4">
+                    <div className="text-white text-sm">
+                      <p className="line-clamp-3">{post.caption}</p>
+                    </div>
+                    <div className="flex items-center justify-between text-white/90 text-sm">
+                      <div className="flex items-center gap-4">
+                        <span>{post.likes} likes</span>
+                        <span>{post.comments} comments</span>
+                      </div>
+                      <span>{post.date}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* API Integration Note */}
+          <div className="mt-8 p-6 bg-[#F2F0EF] rounded-lg">
+            <div className="flex items-start gap-4">
+              <div className="p-2 bg-cardinal-red/10 rounded-lg">
+                <Info className="w-6 h-6 text-cardinal-red" />
+              </div>
+              <div>
+                <h3 className="font-medium text-lg mb-2">Instagram Integration Coming Soon</h3>
+                <p className="text-charcoal-gray/70">
+                  We're working on integrating our live Instagram feed. Soon you'll be able to see our 
+                  latest posts directly on this page. Follow us on Instagram to stay updated in the meantime.
+                </p>
+                <a
+                  href="https://instagram.com/thecardinal"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-cardinal-red hover:text-forest-green transition-colors mt-4"
+                >
+                  Visit our Instagram
+                  <ExternalLink size={16} />
+                </a>
               </div>
             </div>
           </div>

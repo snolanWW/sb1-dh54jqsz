@@ -30,7 +30,10 @@ Their commitment to supporting local entrepreneurs while preserving the historic
   images: [
     "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80",
     "https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?auto=format&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80"
+    "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1519160558534-579f5106e43f?auto=format&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1464869372688-a93d806be852?auto=format&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1485182708500-e8f1f318ba72?auto=format&fit=crop&q=80"
   ],
   testimonials: [
     {
@@ -126,25 +129,49 @@ const AdvertiserOfTheMonthPage = () => {
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Image Gallery */}
             <div className="lg:w-1/2">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="col-span-2">
+              <div className="space-y-4">
+                {/* First large image */}
+                <div>
                   <img
                     src={currentSpotlight.images[0]}
                     alt={currentSpotlight.name}
-                    className="w-full h-64 object-cover rounded-lg"
+                    className="w-full h-80 object-cover rounded-lg"
                   />
                 </div>
-                <div>
+                
+                {/* Two medium images */}
+                <div className="grid grid-cols-2 gap-4">
                   <img
                     src={currentSpotlight.images[1]}
-                    alt={`${currentSpotlight.name} detail 1`}
-                    className="w-full h-40 object-cover rounded-lg"
+                    alt={`${currentSpotlight.name} street view`}
+                    className="w-full h-48 object-cover rounded-lg"
                   />
-                </div>
-                <div>
                   <img
                     src={currentSpotlight.images[2]}
-                    alt={`${currentSpotlight.name} detail 2`}
+                    alt={`${currentSpotlight.name} interior`}
+                    className="w-full h-48 object-cover rounded-lg"
+                  />
+                </div>
+
+                {/* Second large image */}
+                <div>
+                  <img
+                    src={currentSpotlight.images[3]}
+                    alt={`${currentSpotlight.name} evening`}
+                    className="w-full h-80 object-cover rounded-lg"
+                  />
+                </div>
+
+                {/* Two small images */}
+                <div className="grid grid-cols-2 gap-4">
+                  <img
+                    src={currentSpotlight.images[4]}
+                    alt={`${currentSpotlight.name} products`}
+                    className="w-full h-40 object-cover rounded-lg"
+                  />
+                  <img
+                    src={currentSpotlight.images[5]}
+                    alt={`${currentSpotlight.name} staff`}
                     className="w-full h-40 object-cover rounded-lg"
                   />
                 </div>

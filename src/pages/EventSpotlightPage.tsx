@@ -30,8 +30,11 @@ The festival draws thousands of visitors from across the region, showcasing the 
   features: ["160+ Artists", "Live Music", "Food Court", "Family Activities", "Free Admission"],
   images: [
     "https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb?auto=format&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&q=80"
+    "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1460723237483-7a6dc9d0b212?auto=format&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&q=80"
   ]
 };
 
@@ -124,25 +127,49 @@ const EventSpotlightPage = () => {
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Image Gallery */}
             <div className="lg:w-1/2">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="col-span-2">
+              <div className="space-y-4">
+                {/* First large image */}
+                <div>
                   <img
                     src={currentSpotlight.images[0]}
                     alt={currentSpotlight.name}
-                    className="w-full h-64 object-cover rounded-lg"
+                    className="w-full h-80 object-cover rounded-lg"
                   />
                 </div>
-                <div>
+                
+                {/* Two medium images */}
+                <div className="grid grid-cols-2 gap-4">
                   <img
                     src={currentSpotlight.images[1]}
-                    alt={`${currentSpotlight.name} detail 1`}
-                    className="w-full h-40 object-cover rounded-lg"
+                    alt={`${currentSpotlight.name} crowd`}
+                    className="w-full h-48 object-cover rounded-lg"
                   />
-                </div>
-                <div>
                   <img
                     src={currentSpotlight.images[2]}
-                    alt={`${currentSpotlight.name} detail 2`}
+                    alt={`${currentSpotlight.name} performance`}
+                    className="w-full h-48 object-cover rounded-lg"
+                  />
+                </div>
+
+                {/* Second large image */}
+                <div>
+                  <img
+                    src={currentSpotlight.images[3]}
+                    alt={`${currentSpotlight.name} evening view`}
+                    className="w-full h-80 object-cover rounded-lg"
+                  />
+                </div>
+
+                {/* Two small images */}
+                <div className="grid grid-cols-2 gap-4">
+                  <img
+                    src={currentSpotlight.images[4]}
+                    alt={`${currentSpotlight.name} art display`}
+                    className="w-full h-40 object-cover rounded-lg"
+                  />
+                  <img
+                    src={currentSpotlight.images[5]}
+                    alt={`${currentSpotlight.name} people mingling`}
                     className="w-full h-40 object-cover rounded-lg"
                   />
                 </div>

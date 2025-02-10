@@ -48,8 +48,11 @@ Beyond her work at the Food Pantry, Sarah serves on several community boards and
   ],
   images: [
     "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80",
     "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&q=80"
+    "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?auto=format&fit=crop&q=80"
   ]
 };
 
@@ -133,25 +136,49 @@ const PersonSpotlightPage = () => {
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Image Gallery */}
             <div className="lg:w-1/2">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="col-span-2">
+              <div className="space-y-4">
+                {/* First large image */}
+                <div>
                   <img
                     src={currentSpotlight.images[0]}
                     alt={currentSpotlight.name}
-                    className="w-full h-64 object-cover rounded-lg"
+                    className="w-full h-80 object-cover rounded-lg"
                   />
                 </div>
-                <div>
+                
+                {/* Two medium images */}
+                <div className="grid grid-cols-2 gap-4">
                   <img
                     src={currentSpotlight.images[1]}
-                    alt={`${currentSpotlight.name} at work`}
-                    className="w-full h-40 object-cover rounded-lg"
+                    alt={`${currentSpotlight.name} working with volunteers`}
+                    className="w-full h-48 object-cover rounded-lg"
                   />
-                </div>
-                <div>
                   <img
                     src={currentSpotlight.images[2]}
-                    alt={`${currentSpotlight.name} in the community`}
+                    alt={`${currentSpotlight.name} at food drive`}
+                    className="w-full h-48 object-cover rounded-lg"
+                  />
+                </div>
+
+                {/* Second large image */}
+                <div>
+                  <img
+                    src={currentSpotlight.images[3]}
+                    alt={`${currentSpotlight.name} at community event`}
+                    className="w-full h-80 object-cover rounded-lg"
+                  />
+                </div>
+
+                {/* Two small images */}
+                <div className="grid grid-cols-2 gap-4">
+                  <img
+                    src={currentSpotlight.images[4]}
+                    alt={`${currentSpotlight.name} speaking`}
+                    className="w-full h-40 object-cover rounded-lg"
+                  />
+                  <img
+                    src={currentSpotlight.images[5]}
+                    alt={`${currentSpotlight.name} with team`}
                     className="w-full h-40 object-cover rounded-lg"
                   />
                 </div>

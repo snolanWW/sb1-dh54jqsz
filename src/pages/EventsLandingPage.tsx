@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Calendar, Building2, MapPin, Ticket, ChevronRight, Utensils, Music } from 'lucide-react';
+import { Calendar, ChevronRight } from 'lucide-react';
 
 const categories = [
   {
@@ -20,7 +20,7 @@ const categories = [
     id: 'upcoming-events',
     title: 'Upcoming Events',
     description: 'Stay up-to-date with the latest happenings in and around Doylestown.',
-    icon: Ticket,
+    icon: Calendar,
     image: 'https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&q=80',
     count: 45,
     featured: [
@@ -30,55 +30,16 @@ const categories = [
     ]
   },
   {
-    id: 'culinary-events',
-    title: 'Culinary Events',
-    description: 'Experience the local food scene through tastings, festivals, and cooking demonstrations.',
-    icon: Utensils,
-    image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80',
-    count: 18,
+    id: 'all-events',
+    title: 'All Events',
+    description: 'Browse our complete calendar of events happening in the Doylestown area.',
+    icon: Calendar,
+    image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80',
+    count: 150,
     featured: [
-      "Restaurant Week",
-      "Food & Wine Festival",
-      "Chef's Tasting Events"
-    ]
-  },
-  {
-    id: 'music',
-    title: 'Music',
-    description: 'Enjoy live performances, concerts, and musical events throughout Doylestown.',
-    icon: Music,
-    image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&q=80',
-    count: 25,
-    featured: [
-      "Summer Concert Series",
-      "Jazz Nights",
-      "Local Band Showcases"
-    ]
-  },
-  {
-    id: 'arts-and-culture',
-    title: 'Arts & Culture',
-    description: 'Explore our rich artistic heritage through museums, galleries, and cultural events.',
-    icon: Building2,
-    image: 'https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?auto=format&fit=crop&q=80',
-    count: 8,
-    featured: [
-      "Mercer Museum",
-      "Fonthill Castle",
-      "Michener Art Museum"
-    ]
-  },
-  {
-    id: 'tours',
-    title: 'Tours',
-    description: 'Take guided tours through historic sites and local attractions.',
-    icon: MapPin,
-    image: 'https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?auto=format&fit=crop&q=80',
-    count: 15,
-    featured: [
-      "Historic Walking Tours",
-      "Architecture Tours",
-      "Food & Drink Tours"
+      "Community Events",
+      "Cultural Activities",
+      "Local Gatherings"
     ]
   }
 ];
@@ -103,7 +64,7 @@ const EventsLandingPage = () => {
             </h1>
             <p className="text-xl text-white/90 max-w-2xl mb-8">
               Experience the vibrant culture of Doylestown through our diverse calendar of events, 
-              from annual festivals to museum exhibitions and guided tours.
+              from annual festivals to community gatherings.
             </p>
           </div>
         </div>
@@ -123,7 +84,7 @@ const EventsLandingPage = () => {
 
       {/* Categories Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {categories.map(category => (
             <div
               key={category.id}
@@ -164,7 +125,7 @@ const EventsLandingPage = () => {
                 
                 <div className="flex items-center justify-between">
                   <span className="text-white/90">
-                    {category.count} {category.id === 'upcoming-events' ? 'Events' : 'Locations'}
+                    {category.count} Events
                   </span>
                   <Link
                     to={`/events/${category.id}`}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, Search, ChevronDown } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import { Menu, X, Search, ChevronDown } from 'lucide-react';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -34,7 +34,7 @@ const Navigation = () => {
     return location.pathname === path;
   };
 
-  const MobileNavLink = ({ to, children }: { to: string; children: React.ReactNode }) => (
+  const MobileNavLink = ({ to, children, onClick }: { to: string; children: React.ReactNode; onClick?: () => void }) => (
     <Link
       to={to}
       className={`text-xl font-serif italic transition-colors ${
@@ -42,7 +42,10 @@ const Navigation = () => {
           ? 'text-[#8B0000] font-bold'
           : 'text-[#333333] hover:text-[#8B0000]'
       }`}
-      onClick={() => setIsMobileMenuOpen(false)}
+      onClick={() => {
+        setIsMobileMenuOpen(false);
+        onClick?.();
+      }}
     >
       {children}
     </Link>
@@ -66,10 +69,7 @@ const Navigation = () => {
     { name: 'Events', path: '/events', hasDropdown: true, dropdownItems: [
       { name: "Annual Events", path: "/events/annual-events" },
       { name: "Upcoming Events", path: "/events/upcoming-events" },
-      { name: "Culinary Events", path: "/events/culinary-events" },
-      { name: "Music", path: "/events/music" },
-      { name: "Arts & Culture", path: "/events/arts-and-culture" },
-      { name: "Tours", path: "/events/tours" }
+      { name: "All Events", path: "/events/all-events" }
     ]},
     { 
       name: 'Community', 
@@ -98,15 +98,50 @@ const Navigation = () => {
       path: '/support', 
       hasDropdown: true, 
       dropdownItems: [
-        { name: "Advertise with Us", path: "/advertise" },
-        { name: "Pricing", path: "/advertise#pricing" },
-        { name: "Subscribe", path: "/subscribe" },
+        {
+          name: "Advertise with Us",
+          path: "/advertise",
+          subItems: [
+            { name: "Pricing", path: "/advertise#pricing" },
+            { name: "Benefits", path: "/advertise#benefits" },
+            { name: "Digital Ads", path: "/advertise#digital-ads" },
+            { name: "Print Ads", path: "/advertise#print-ads" }
+          ]
+        },
+        { name: "Print Subscriptions", path: "/print-subscriptions" },
+        { name: "Digital Subscriptions", path: "/digital-subscriptions" },
         { name: "Donate", path: "/donate" },
-        { name: "Become a Member", path: "/membership" }
+        { name: "Annual Fundraiser", path: "/annual-fundraiser" },
+        { name: "Find The Cardinal", path: "/locations" }
       ]
     },
-    { name: 'About', path: '/about' }
+    { 
+      name: 'More', 
+      path: '/about',
+      hasDropdown: true,
+      dropdownItems: [
+        { name: "About Us", path: "/about" },
+        { name: "Meet the Writers", path: "/writers" },
+        { name: "Editorial Submissions", path: "/editorial-submissions" },
+        { name: "Past Issues", path: "/archive" },
+        { name: "Contact Us", path: "/contact" }
+      ]
+    }
   ];
+
+  const handleNavigation = (path: string) => {
+    if (path.includes('#')) {
+      const [basePath, hash] = path.split('#');
+      if (location.pathname !== basePath) {
+        window.location.href = path;
+      } else {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+  };
 
   return (
     <div className="fixed w-full z-50">
@@ -143,6 +178,7 @@ const Navigation = () => {
                   >
                     <Link
                       to={link.path}
+                      onClick={() => handleNavigation(link.path)}
                       className={`relative font-serif italic text-base transition-colors py-2 group ${
                         isCurrentPage(link.path)
                           ? 'text-[#8B0000] font-semibold'
@@ -164,6 +200,7 @@ const Navigation = () => {
                             <div key={item.path}>
                               <Link
                                 to={item.path}
+                                onClick={() => handleNavigation(item.path)}
                                 className={`block px-4 py-2 text-sm transition-colors ${
                                   isCurrentPage(item.path)
                                     ? 'text-[#8B0000] font-semibold bg-[#8B0000]/5'
@@ -178,6 +215,7 @@ const Navigation = () => {
                                     <Link
                                       key={subItem.path}
                                       to={subItem.path}
+                                      onClick={() => handleNavigation(subItem.path)}
                                       className={`block px-4 py-2 text-sm transition-colors ${
                                         isCurrentPage(subItem.path)
                                           ? 'text-[#8B0000] font-semibold bg-[#8B0000]/5'
@@ -243,20 +281,20 @@ const Navigation = () => {
               <div className="flex flex-col space-y-4">
                 {navLinks.map((link) => (
                   <div key={link.name}>
-                    <MobileNavLink to={link.path}>
+                    <MobileNavLink to={link.path} onClick={() => handleNavigation(link.path)}>
                       {link.name}
                     </MobileNavLink>
                     {link.hasDropdown && (
                       <div className="pl-4 mt-2 space-y-2">
                         {link.dropdownItems.map((item) => (
                           <div key={item.path}>
-                            <MobileNavLink to={item.path}>
+                            <MobileNavLink to={item.path} onClick={() => handleNavigation(item.path)}>
                               {item.name}
                             </MobileNavLink>
                             {item.subItems && (
                               <div className="pl-4 mt-2 space-y-2">
                                 {item.subItems.map((subItem) => (
-                                  <MobileNavLink key={subItem.path} to={subItem.path}>
+                                  <MobileNavLink key={subItem.path} to={subItem.path} onClick={() => handleNavigation(subItem.path)}>
                                     {subItem.name}
                                   </MobileNavLink>
                                 ))}

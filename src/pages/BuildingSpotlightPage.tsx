@@ -30,7 +30,10 @@ Through the support of the community and careful stewardship, the County Theater
   images: [
     "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&q=80",
     "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&q=80"
+    "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&q=80"
   ],
   upcomingEvents: [
     {
@@ -130,25 +133,49 @@ const BuildingSpotlightPage = () => {
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Image Gallery */}
             <div className="lg:w-1/2">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="col-span-2">
+              <div className="space-y-4">
+                {/* First large image */}
+                <div>
                   <img
                     src={currentSpotlight.images[0]}
                     alt={currentSpotlight.name}
-                    className="w-full h-64 object-cover rounded-lg"
+                    className="w-full h-80 object-cover rounded-lg"
                   />
                 </div>
-                <div>
+                
+                {/* Two medium images */}
+                <div className="grid grid-cols-2 gap-4">
                   <img
                     src={currentSpotlight.images[1]}
-                    alt={`${currentSpotlight.name} detail 1`}
-                    className="w-full h-40 object-cover rounded-lg"
+                    alt={`${currentSpotlight.name} interior`}
+                    className="w-full h-48 object-cover rounded-lg"
                   />
-                </div>
-                <div>
                   <img
                     src={currentSpotlight.images[2]}
-                    alt={`${currentSpotlight.name} detail 2`}
+                    alt={`${currentSpotlight.name} theater`}
+                    className="w-full h-48 object-cover rounded-lg"
+                  />
+                </div>
+
+                {/* Second large image */}
+                <div>
+                  <img
+                    src={currentSpotlight.images[3]}
+                    alt={`${currentSpotlight.name} evening`}
+                    className="w-full h-80 object-cover rounded-lg"
+                  />
+                </div>
+
+                {/* Two small images */}
+                <div className="grid grid-cols-2 gap-4">
+                  <img
+                    src={currentSpotlight.images[4]}
+                    alt={`${currentSpotlight.name} details`}
+                    className="w-full h-40 object-cover rounded-lg"
+                  />
+                  <img
+                    src={currentSpotlight.images[5]}
+                    alt={`${currentSpotlight.name} marquee`}
                     className="w-full h-40 object-cover rounded-lg"
                   />
                 </div>
