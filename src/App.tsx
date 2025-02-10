@@ -1,0 +1,75 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navigation from './components/Navigation';
+import Footer from './components/Footer';
+import HomePage from './pages/HomePage';
+import ArticlesPage from './pages/ArticlesPage';
+import EventsLandingPage from './pages/EventsLandingPage';
+import EventsPage from './pages/EventsPage';
+import AboutPage from './pages/AboutPage';
+import ArticlePage from './pages/ArticlePage';
+import IssuePage from './pages/IssuePage';
+import ArchivePage from './pages/ArchivePage';
+import AdvertisePage from './pages/AdvertisePage';
+import WriterPage from './pages/WriterPage';
+import MeetTheWritersPage from './pages/MeetTheWritersPage';
+import CommunityPage from './pages/CommunityPage';
+import CommunitySpotlightPage from './pages/CommunitySpotlightPage';
+import BusinessSpotlightPage from './pages/BusinessSpotlightPage';
+import PersonSpotlightPage from './pages/PersonSpotlightPage';
+import EventSpotlightPage from './pages/EventSpotlightPage';
+import BuildingSpotlightPage from './pages/BuildingSpotlightPage';
+import AdvertiserOfTheMonthPage from './pages/AdvertiserOfTheMonthPage';
+import BusinessDirectoryPage from './pages/BusinessDirectoryPage';
+import TownGuidesPage from './pages/TownGuidesPage';
+import ThingsToDoPage from './pages/ThingsToDoPage';
+import BestOfDoylestownPage from './pages/BestOfDoylestownPage';
+import { NewsletterProvider, useNewsletterContext } from './context/NewsletterContext';
+
+const AppContent = () => {
+  const { showPopup, handleClose } = useNewsletterContext();
+
+  return (
+    <Router>
+      <div className="min-h-screen bg-[#F2F0EF]">
+        <Navigation />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/articles" element={<ArticlesPage />} />
+          <Route path="/articles/:id" element={<ArticlePage />} />
+          <Route path="/writers" element={<MeetTheWritersPage />} />
+          <Route path="/events" element={<EventsLandingPage />} />
+          <Route path="/events/:category" element={<EventsPage />} />
+          <Route path="/community" element={<CommunityPage />} />
+          <Route path="/community/spotlight" element={<CommunitySpotlightPage />} />
+          <Route path="/community/spotlight/business" element={<BusinessSpotlightPage />} />
+          <Route path="/community/spotlight/person" element={<PersonSpotlightPage />} />
+          <Route path="/community/spotlight/event" element={<EventSpotlightPage />} />
+          <Route path="/community/spotlight/building" element={<BuildingSpotlightPage />} />
+          <Route path="/community/spotlight/advertiser" element={<AdvertiserOfTheMonthPage />} />
+          <Route path="/community/directory" element={<BusinessDirectoryPage />} />
+          <Route path="/community/directory/guides" element={<TownGuidesPage />} />
+          <Route path="/community/directory/things-to-do" element={<ThingsToDoPage />} />
+          <Route path="/community/best-of" element={<BestOfDoylestownPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/current-issue" element={<IssuePage />} />
+          <Route path="/archive" element={<ArchivePage />} />
+          <Route path="/advertise" element={<AdvertisePage />} />
+          <Route path="/writer/:writerId" element={<WriterPage />} />
+        </Routes>
+        <Footer />
+        {showPopup && <NewsletterPopup onClose={handleClose} />}
+      </div>
+    </Router>
+  );
+};
+
+function App() {
+  return (
+    <NewsletterProvider>
+      <AppContent />
+    </NewsletterProvider>
+  );
+}
+
+export default App;
